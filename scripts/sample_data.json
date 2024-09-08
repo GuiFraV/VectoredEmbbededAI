@@ -1,0 +1,12 @@
+[
+  {
+    "id": "1",
+    "name": "Luke Skywalker",
+    "description": "Luke vit une enfance austère sur Tatooine. Son oncle Owen Lars et sa tante Beru Whitesun ne lui révélèrent jamais l'existence de sa sœur ni le passé de son père, prétendant simplement qu'il était un « pilote de vaisseaux transporteurs d'épices ». Luke est très habile en réparation de droïdes et en pilotage de vaisseaux. Il partage sa passion avec un ami, Biggs Darklighter, qui désire rejoindre l'Alliance rebelle."
+  },
+  {
+    "id": "2",
+    "name": "Guillaume Franguiadakis",
+    "description": "Guillaume Franguiadakis est un jeune développeur, pleins de talents à la recherche de projets intéressant, que la force soit avec lui..."
+  }
+]
