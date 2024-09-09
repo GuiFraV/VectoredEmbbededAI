@@ -42,33 +42,15 @@ const loadSampleData = async () => {
         model: "text-embedding-ada-002",
       });
 
-      let retries = 3;
-      while (retries > 0) {
-        try {
-          console.log(`Inserting chunk ${i} for character ${name}`);
-          const res = await collection.insertOne({
-            document_id: id,
-            $vector: data[0]?.embedding,
-            name,
-            description: chunk,
-          });
-          console.log(`Insert result for chunk ${i}:`, res);
-          if (!res.insertedId) {
-            console.error(`Failed to insert chunk ${i} for character ${name}`);
-          }
-          break; // Si l'insertion réussit, sortir de la boucle
-        } catch (error) {
-          console.error(
-            `Error inserting chunk ${i} for character ${name}:`,
-            error
-          );
-          retries--;
-          if (retries === 0) {
-            throw error; // Si plus de tentatives, relancer l'erreur
-          }
-          console.log(`Retrying in 5 seconds... (${retries} retries left)`);
-          await new Promise((resolve) => setTimeout(resolve, 5000)); // Attendre 5 secondes avant de réessayer
-        }
+      let i = 0;
+   
+      const res = await collection.insertOne({
+        document_id: id,
+        $vector: data[0]?.embedding,
+        name,
+        description: chunk,
+      });
+        
       }
       i++;
     }
@@ -80,5 +62,4 @@ createCollection()
   .then(() => loadSampleData())
   .catch((error) => {
     console.error("Unrecoverable error:", error);
-    // Vous pouvez ajouter ici une logique supplémentaire pour gérer les erreurs irrécupérables
   });
