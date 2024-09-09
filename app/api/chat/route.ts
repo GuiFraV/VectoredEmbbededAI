@@ -1,7 +1,7 @@
 import OpenAI from "openai";
 import { OpenAIStream, StreamingTextResponse } from "ai";
 import { DataAPIClient } from "@datastax/astra-db-ts";
-import sampleData from "../../../scripts/sample_data.json"; // Assurez-vous que le chemin est correct
+import sampleData from "../../../scripts/sample_data.json";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -54,7 +54,7 @@ export async function POST(req: Request) {
     if (!isStarWarsRelated(latestMessage)) {
       return new Response(
         JSON.stringify({
-          answer: "Désolé, je ne peux répondre qu'aux questions sur Star Wars.",
+          answer: "Désolé, je n'ai pas la réponse à votre question.",
         }),
         {
           status: 200,
@@ -99,7 +99,7 @@ export async function POST(req: Request) {
         content: `Tu es un assistant très utile qui peut répondre à des questions sur Star Wars. Ton Format de réponses est en markdown là où c'est applicable. 
         ${docContext}
         Si la réponse n'est pas fournie par le contexte, l'assistant AI répondra "Désolé, je n'ai pas la réponse". 
-        Ne réponds qu'aux questions sur Star Wars. Si la question n'est pas liée à Star Wars, réponds "Désolé, je ne peux répondre qu'aux questions sur Star Wars".
+        Ne réponds qu'aux questions sur Star Wars. Si la question n'est pas liée à Star Wars, réponds "Désolé, je n'ai pas la réponse à votre question".
         `,
       },
     ];
