@@ -42,16 +42,13 @@ const loadSampleData = async () => {
         model: "text-embedding-ada-002",
       });
 
-      let i = 0;
-   
       const res = await collection.insertOne({
         document_id: id,
         $vector: data[0]?.embedding,
         name,
         description: chunk,
       });
-        
-      }
+      console.log(`Inserted chunk ${i} for ${name}`);
       i++;
     }
   }
